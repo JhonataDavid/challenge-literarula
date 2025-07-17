@@ -1,9 +1,6 @@
 package com.jhonata.challenge.literalura.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity(name = "Autor")
@@ -11,7 +8,6 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class AutorEntity {
 
     @Id
@@ -21,5 +17,8 @@ public class AutorEntity {
     private String nome;
     private Integer dataNascimento;
     private Integer dataFalecimento;
+    @ManyToOne
+    @JoinColumn(name = "livro_id") // cria a chave estrangeira
+    private LivroEntity livro;
 
 }
