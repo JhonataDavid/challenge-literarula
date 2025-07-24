@@ -23,4 +23,7 @@ public class LivroEntity {
     private int identificador;
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<AutorEntity> autores;
+    @ElementCollection
+    private List<String> idioma;
+    private int numeroDeDownloads;
 }

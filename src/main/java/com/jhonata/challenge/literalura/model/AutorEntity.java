@@ -20,5 +20,4 @@ public class AutorEntity {
     @ManyToOne
     @JoinColumn(name = "livro_id") // cria a chave estrangeira
     private LivroEntity livro;
-
 }

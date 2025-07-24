@@ -2,6 +2,7 @@ package com.jhonata.challenge.literalura.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,5 +11,7 @@ public record GutendexApiResponse(
         String next,
         String previous,
         @JsonAlias("results")
-        List<LivroDto> livroDtos) {
+        List<LivroDTO> livroDTOS,
+        List<String> languages,
+        Integer downloadCount) {
 }
