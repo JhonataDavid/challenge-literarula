@@ -1,7 +1,7 @@
 package com.jhonata.challenge.literalura.controller;
 
-import com.jhonata.challenge.literalura.dto.LivroDto;
-import com.jhonata.challenge.literalura.dto.LivroResponseDto;
+import com.jhonata.challenge.literalura.dto.LivroDTO;
+import com.jhonata.challenge.literalura.dto.LivroResponseDTO;
 import com.jhonata.challenge.literalura.service.LivroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +20,14 @@ public class LivroController {
     }
 
     @PostMapping
-    public ResponseEntity<LivroDto> salvar(@RequestBody LivroDto livroDto) {
-        LivroDto livroSalvo = service.saveBook(livroDto);
+    public ResponseEntity<LivroDTO> salvar(@RequestBody LivroDTO livroDto) {
+        LivroDTO livroSalvo = service.saveBook(livroDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(livroSalvo);
     }
 
-
     @GetMapping("/livros")
-    public ResponseEntity<List<LivroResponseDto>> getLivros() {
-        List<LivroResponseDto> livroResponseDtoList = service.getAllBooks();
-        return ResponseEntity.ok(livroResponseDtoList);
+    public ResponseEntity<List<LivroResponseDTO>> getAllLivros() {
+        List<LivroResponseDTO> livroResponseDTOList = service.getAllBooks();
+        return ResponseEntity.ok(livroResponseDTOList);
     }
 }
