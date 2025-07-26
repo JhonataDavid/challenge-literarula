@@ -9,5 +9,5 @@ public record LivroDTO(int id,
                        String title,
                        List<AutorDTO> authors,
                        List<String> languages,
-                       Integer downloadCount) {
+                       Integer download_count) {
 }

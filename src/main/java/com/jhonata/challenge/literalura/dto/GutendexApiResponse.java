@@ -13,5 +13,5 @@ public record GutendexApiResponse(
         @JsonAlias("results")
         List<LivroDTO> livroDTOS,
         List<String> languages,
-        Integer downloadCount) {
+        Integer download_count) {
 }

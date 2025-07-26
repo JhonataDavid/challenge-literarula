@@ -21,7 +21,7 @@ public class GutendexClient {
 
     public List<LivroDTO> consumirApi(String busca) {
         try {
-            String url = "https://gutendex.com/books/?search=" + busca + "&page_size=1";
+            String url = "https://gutendex.com/books/?search=" + busca;
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
