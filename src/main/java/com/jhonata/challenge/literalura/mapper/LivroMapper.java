@@ -16,22 +16,22 @@ public interface LivroMapper {
     @Mapping(source = "id", target = "identificador")
     @Mapping(source = "authors", target = "autores")
     @Mapping(source = "languages", target = "idioma")
-    @Mapping(source = "downloadCount", target = "numeroDeDownloads")
+    @Mapping(source = "download_count", target = "numeroDeDownloads")
     LivroEntity dtoToEntity(LivroDTO livroDto);
 
     @Mapping(source = "titulo", target = "title")
     @Mapping(source = "identificador", target = "id")
     @Mapping(source = "autores", target = "authors")
     @Mapping(source = "idioma", target = "languages")
-    @Mapping(source = "numeroDeDownloads", target = "downloadCount")
+    @Mapping(source = "numeroDeDownloads", target = "download_count")
     LivroDTO entityToDto(LivroEntity livroEntity);
 
-    List<LivroResponseDTO> booksToDtoResponse(List<LivroEntity> livrosEntity);
+    List<LivroResponseDTO> entityToDtoResponse(List<LivroEntity> livrosEntity);
 
     @Mapping(source = "title", target = "titulo")
     @Mapping(source = "id", target = "identificador")
     @Mapping(source = "authors", target = "autores")
     @Mapping(source = "languages", target = "idioma")
-    @Mapping(source = "downloadCount", target = "numeroDeDownloads")
-    LivroResponseDTO booksToDtoResponse(LivroDTO livroDTO);
+    @Mapping(source = "download_count", target = "numeroDeDownloads")
+    LivroResponseDTO dtoToDtoResponse(LivroDTO livroDTO);
 }
