@@ -21,7 +21,7 @@ public class LivroEntity {
 
     private String titulo;
     private int identificador;
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<AutorEntity> autores;
     @ElementCollection
     private List<String> idioma;
