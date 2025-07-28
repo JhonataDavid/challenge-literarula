@@ -1,7 +1,7 @@
 package com.jhonata.challenge.literalura.mapper;
 
-import com.jhonata.challenge.literalura.dto.LivroDTO;
-import com.jhonata.challenge.literalura.dto.LivroResponseDTO;
+import com.jhonata.challenge.literalura.dto.external.LivroDTO;
+import com.jhonata.challenge.literalura.dto.response.LivroResponseDTO;
 import com.jhonata.challenge.literalura.model.LivroEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,12 +26,19 @@ public interface LivroMapper {
     @Mapping(source = "numeroDeDownloads", target = "download_count")
     LivroDTO entityToDto(LivroEntity livroEntity);
 
-    List<LivroResponseDTO> entityToDtoResponse(List<LivroEntity> livrosEntity);
-
     @Mapping(source = "title", target = "titulo")
     @Mapping(source = "id", target = "identificador")
     @Mapping(source = "authors", target = "autores")
     @Mapping(source = "languages", target = "idioma")
     @Mapping(source = "download_count", target = "numeroDeDownloads")
     LivroResponseDTO dtoToDtoResponse(LivroDTO livroDTO);
+
+    LivroResponseDTO entityToDtoResponse(LivroEntity livroEntity);
+
+    @Mapping(source = "title", target = "titulo")
+    @Mapping(source = "id", target = "identificador")
+    @Mapping(source = "authors", target = "autores")
+    @Mapping(source = "languages", target = "idioma")
+    @Mapping(source = "download_count", target = "numeroDeDownloads")
+    List<LivroResponseDTO> entityToDtoResponse(List<LivroEntity> livrosEntity);
 }

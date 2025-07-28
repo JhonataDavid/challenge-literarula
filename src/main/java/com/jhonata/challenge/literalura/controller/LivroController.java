@@ -1,7 +1,7 @@
 package com.jhonata.challenge.literalura.controller;
 
-import com.jhonata.challenge.literalura.dto.LivroDTO;
-import com.jhonata.challenge.literalura.dto.LivroResponseDTO;
+import com.jhonata.challenge.literalura.dto.external.LivroDTO;
+import com.jhonata.challenge.literalura.dto.response.LivroResponseDTO;
 import com.jhonata.challenge.literalura.service.LivroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

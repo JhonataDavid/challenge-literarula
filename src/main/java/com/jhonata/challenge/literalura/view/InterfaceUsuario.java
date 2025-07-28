@@ -1,46 +1,43 @@
 package com.jhonata.challenge.literalura.view;
 
-import com.jhonata.challenge.literalura.client.GutendexClient;
-import com.jhonata.challenge.literalura.dto.LivroResponseDTO;
-import com.jhonata.challenge.literalura.mapper.LivroMapper;
-import com.jhonata.challenge.literalura.service.LivroService;
+import com.jhonata.challenge.literalura.service.ViewService;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 @Component
 public class InterfaceUsuario {
 
-    private final Scanner scanner = new Scanner(System.in);
-    private final LivroService service;
-    private GutendexClient gutendexClient;
-    private LivroMapper mapper;
+    private final Scanner scanner;
+    private final ViewService service;
 
-    public InterfaceUsuario(LivroService livroService) {
-        this.service = livroService;
+    public InterfaceUsuario(ViewService service) {
+        this.service = service;
+        this.scanner = new Scanner(System.in);
     }
 
     public void exibirMenu() {
         int opcao = -1;
 
         while (opcao != 0) {
-            System.out.println("\n=== MENU ===");
-            System.out.println("1 - Inserir dados");
-            System.out.println("2 - Consultar dados");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
-
+            service.menu();
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
 
                 switch (opcao) {
                     case 1:
-                        menuSalvaLivro();
+                        service.menuSalvaLivro();
                         break;
                     case 2:
-                        menuDeLivrosSalvos();
+                        service.menuDeLivrosSalvos();
                         break;
+                    case 3:
+                        service.mostrarAutoresSalvos();
+                        break;
+                    case 4:
+                        service.mostrarAutoresPeloAno();
+                    case 5:
+                        service.mostrarPorIdioma();
                     case 0:
                         System.out.println("Encerrando...");
                         break;
@@ -52,20 +49,6 @@ public class InterfaceUsuario {
                 System.out.println("Entrada inválida. Digite um número.");
             }
         }
-
         scanner.close();
     }
-
-    private void menuSalvaLivro() {
-        System.out.println("Digite o nome de um livro para buscar e salvar");
-        String nomeLivro = scanner.nextLine();
-        Optional<LivroResponseDTO> livroResponse = service.buscarLivros(nomeLivro);
-        System.out.println("Livro salvo: \n" + livroResponse);
-    }
-
-    private void menuDeLivrosSalvos(){
-        System.out.println("Seus livros salvos sao: ");
-        System.out.println(service.getAllBooks());
-    }
-
 }

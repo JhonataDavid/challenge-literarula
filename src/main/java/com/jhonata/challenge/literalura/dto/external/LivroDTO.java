@@ -1,4 +1,4 @@
-package com.jhonata.challenge.literalura.dto;
+package com.jhonata.challenge.literalura.dto.external;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,8 +1,8 @@
 package com.jhonata.challenge.literalura.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jhonata.challenge.literalura.dto.GutendexApiResponse;
-import com.jhonata.challenge.literalura.dto.LivroDTO;
+import com.jhonata.challenge.literalura.dto.external.GutendexApiResponse;
+import com.jhonata.challenge.literalura.dto.external.LivroDTO;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

@@ -21,7 +21,10 @@ public class LivroEntity {
 
     private String titulo;
     private int identificador;
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "livro_autor",
+            joinColumns = @JoinColumn(name = "livro_id"), //cria coluna com chave primaria do Livro
+            inverseJoinColumns = @JoinColumn(name = "autor_id")) //cria coluna com chave primaria do Autor
     private List<AutorEntity> autores;
     @ElementCollection
     private List<String> idioma;
