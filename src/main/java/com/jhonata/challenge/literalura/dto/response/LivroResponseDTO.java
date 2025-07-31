@@ -22,7 +22,7 @@ public class LivroResponseDTO {
 
     @Override
     public String toString() {
-        return "\n  título: " + titulo +
+        return "\n  título: " + getTitulo() +
                 ",\n  autor: " + autores.getFirst().nome() +
                 ",\n  identificador: " + identificador +
                 ",\n  idioma: " + idioma.getFirst() +

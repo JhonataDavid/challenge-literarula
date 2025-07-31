@@ -36,8 +36,10 @@ public class InterfaceUsuario {
                         break;
                     case 4:
                         service.mostrarAutoresPeloAno();
+                        break;
                     case 5:
                         service.mostrarPorIdioma();
+                        break;
                     case 0:
                         System.out.println("Encerrando...");
                         break;

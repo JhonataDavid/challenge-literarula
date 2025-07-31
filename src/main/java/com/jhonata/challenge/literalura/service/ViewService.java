@@ -2,6 +2,7 @@ package com.jhonata.challenge.literalura.service;
 
 import com.jhonata.challenge.literalura.dto.response.AutorCompletoDTO;
 import com.jhonata.challenge.literalura.dto.response.LivroResponseDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Slf4j
 @Service
 public class ViewService {
 
@@ -21,7 +23,7 @@ public class ViewService {
         this.autorService = autorService;
     }
 
-    public void menu(){
+    public void menu() {
         System.out.println("\n=== MENU ===");
         System.out.println("1 - Inserir dados");
         System.out.println("2 - Consultar livros");
@@ -29,17 +31,34 @@ public class ViewService {
         System.out.println("4 - Consultar autores vivos em um determinado ano");
         System.out.println("5 - Consultar livros pelo idioma");
         System.out.println("0 - Sair");
-        System.out.print("Escolha uma opção: ");    }
+        System.out.print("Escolha uma opção: ");
+    }
 
     public void mostrarAutoresPeloAno() {
+        System.out.println("Digite uma data para filtrar");
         Integer anoDeNascimento = scanner.nextInt();
-        List<AutorCompletoDTO> autores = autorService.buscarAutoresPeloAno(anoDeNascimento);
-        autores.forEach(System.out::println);
+        scanner.nextLine();
+        List<AutorCompletoDTO> autoresDto = autorService.buscarAutoresPeloAno(anoDeNascimento);
+        autoresDto.forEach(autores -> {
+            System.out.println("-----------------------Autor-----------------------");
+            System.out.println("Nome: " + autores.getNome());
+            System.out.println("Data de Nascimento: " + autores.getDataNascimento());
+            System.out.println("Data de Falecimento: " + autores.getDataFalecimento());
+            System.out.println("Livros: " + autores.getLivros());
+            System.out.println("----------------------------------------------------");
+        });
     }
 
     public void mostrarAutoresSalvos() {
-        List<AutorCompletoDTO>autorCompletoDTOS = autorService.buscarTodosAutores();
-        autorCompletoDTOS.forEach(System.out::println);
+        List<AutorCompletoDTO> autorCompletoDTOS = autorService.buscarTodosAutores();
+        autorCompletoDTOS.forEach(autor -> {
+            System.out.println("-----------------------Autor-----------------------");
+            System.out.println("Nome: " + autor.getNome());
+            System.out.println("Data de Nascimento: " + autor.getDataNascimento());
+            System.out.println("Data de Falecimento: " + autor.getDataFalecimento());
+            System.out.println("Livros: " + autor.getLivros());
+            System.out.println("----------------------------------------------------");
+        });
     }
 
     public void menuSalvaLivro() {
@@ -49,18 +68,18 @@ public class ViewService {
         System.out.println("Livro salvo: \n" + livroResponse);
     }
 
-    public void menuDeLivrosSalvos(){
+    public void menuDeLivrosSalvos() {
         System.out.println("Seus livros salvos sao: ");
-        System.out.println("-----====LIVROS====-----");
+        System.out.println("------------------LIVROS------------------");
         AtomicInteger index = new AtomicInteger(1);
         livroService.getAllBooks().forEach(livroResponseDTO -> {
             System.out.println("Livro " + index.getAndIncrement());
             System.out.println(livroResponseDTO);
         });
-        System.out.println("------------------------");
+        System.out.println("------------------------------------------");
     }
 
-    public void mostrarPorIdioma(){
+    public void mostrarPorIdioma() {
         System.out.println("Digite um idioma para buscar");
         String idioma = scanner.nextLine();
         System.out.println("pt - portugues");
